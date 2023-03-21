@@ -5,5 +5,6 @@ export default async function handler(req, res) {
   await initMongoose();
 
   const id = req.query.id;
-  res.json(id);
+  const user = await User.findById(id);
+  res.json({ user });
 }

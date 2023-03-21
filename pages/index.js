@@ -1,19 +1,19 @@
+import UsernameForm from '@/components/UsernameForm';
+import useUserInfo from '@/hooks/useUserInfo';
 import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
 
 export default function Home() {
   const { data: session, status } = useSession();
-  console.log(session);
-  function getUserInfo() {
-    if (status === 'loading') {
-      return;
-    }
-    fetch('/api/users?id=' + session.user.id);
+  //console.log(session);
+  const { userInfo, status: userInfoStatus } = useUserInfo();
+
+  if (userInfoStatus === 'loading') {
+    return 'loading user info';
   }
 
-  useEffect(() => {
-    getUserInfo();
-  }, [status]);
+  if (!userInfo?.username) {
+    return <UsernameForm />;
+  }
 
   return (
     <>
