@@ -21,8 +21,9 @@ export default NextAuth({
 
   callbacks: {
     session: async ({ token, session }) => {
-      if (session?.user && token) {
-        console.log(token);
+      if (session?.user && token?.sub) {
+        //console.log(token);
+        session.user.id = token.sub;
       }
       return session;
     },
