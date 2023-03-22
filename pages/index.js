@@ -1,3 +1,5 @@
+import Layout from '@/components/Layout';
+import PostContent from '@/components/PostContent';
 import PostForm from '@/components/PostForm';
 import UsernameForm from '@/components/UsernameForm';
 import useUserInfo from '@/hooks/useUserInfo';
@@ -28,19 +30,22 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div className='max-w-lg mx-auto border-l border-r border-x-twitterBorder min-h-screen'>
-        <h1 className='text-lg font-bold p-4'>Home</h1>
-        <PostForm
-          onPost={() => {
-            fetchPosts();
-          }}
-        />
+    <Layout>
+      <h1 className='text-lg font-bold p-4'>Home</h1>
+      <PostForm
+        onPost={() => {
+          fetchPosts();
+        }}
+      />
 
-        <div className='border-t border-twitterBorder p-5'>
-          {posts.length > 0 && posts.map((post) => <div>{post.text}</div>)}
-        </div>
+      <div className='border-t border-twitterBorder p-5'>
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <div>
+              <PostContent {...post} />
+            </div>
+          ))}
       </div>
-    </>
+    </Layout>
   );
 }
