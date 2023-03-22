@@ -24,7 +24,7 @@ export default function UsernameForm() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ username }),
     });
-    // router.reload();
+    router.reload();
     //console.log({ username });
   }
 

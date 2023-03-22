@@ -1,3 +1,4 @@
+import PostForm from '@/components/PostForm';
 import UsernameForm from '@/components/UsernameForm';
 import useUserInfo from '@/hooks/useUserInfo';
 import { useSession } from 'next-auth/react';
@@ -17,7 +18,10 @@ export default function Home() {
 
   return (
     <>
-      <h1>Test</h1>
+      <div className='max-w-lg mx-auto border-l border-r border-x-twitterBorder min-h-screen'>
+        <h1 className='text-lg font-bold p-4'>Home</h1>
+        <PostForm />
+      </div>
     </>
   );
 }
