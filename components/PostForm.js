@@ -2,7 +2,7 @@ import useUserInfo from '../hooks/useUserInfo';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function PostForm() {
+export default function PostForm({ onPost }) {
   const { userInfo, status } = useUserInfo();
   const [text, setText] = useState('');
   //const [images, setImages] = useState([]);
@@ -10,11 +10,11 @@ export default function PostForm() {
   async function handlePostSubmit(e) {
     e.preventDefault();
     await axios.post('/api/posts', { text });
-    // setText('');
+    setText('');
     // setImages([]);
-    // if (onPost) {
-    //   onPost();
-    // }
+    if (onPost) {
+      onPost();
+    }
 
     console.log({ text });
   }

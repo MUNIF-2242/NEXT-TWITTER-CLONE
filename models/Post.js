@@ -8,10 +8,10 @@ const PostSchema = new Schema(
     // commentsCount: { type: Number, default: 0 },
     // parent: { type: mongoose.Types.ObjectId, ref: 'Post' },
     // images: { type: [String] },
+  },
+  {
+    timestamps: true,
   }
-  // {
-  //   timestamps: true,
-  // }
 );
 
 const Post = models?.Post || model('Post', PostSchema);
