@@ -19,13 +19,13 @@ export default function UsernameForm() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    // await fetch('/api/users', {
-    //   method: 'PUT',
-    //   headers: { 'content-type': 'application/json' },
-    //   body: JSON.stringify({ username }),
-    // });
+    await fetch('/api/users', {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username }),
+    });
     // router.reload();
-    console.log({ username });
+    //console.log({ username });
   }
 
   if (status === 'loading') {

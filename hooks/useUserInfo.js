@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function useUserInfo() {
   const { data: session, status: sessionStatus } = useSession();
-  //console.log(session);
+  console.log(session);
 
   const [userInfo, setUserInfo] = useState();
   const [status, setStatus] = useState('loading');
