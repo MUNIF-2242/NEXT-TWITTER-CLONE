@@ -44,7 +44,7 @@ export default function PostPage() {
       </div>
       {!!post?._id && (
         <div className='p-5'>
-          <PostContent {...post} />
+          <PostContent {...post} big={true} />
         </div>
       )}
     </Layout>
