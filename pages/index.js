@@ -12,10 +12,12 @@ export default function Home() {
   //console.log(session);
   const { userInfo, status: userInfoStatus } = useUserInfo();
   const [posts, setPosts] = useState([]);
+  const [idsLikedByMe, setIdsLikedByMe] = useState([]);
 
   function fetchPosts() {
     axios.get('/api/posts').then((res) => {
-      setPosts(res.data);
+      setPosts(res.data.posts);
+      setIdsLikedByMe(res.data.idsLikedByMe);
     });
   }
   useEffect(() => {
@@ -42,7 +44,10 @@ export default function Home() {
         {posts.length > 0 &&
           posts.map((post) => (
             <div>
-              <PostContent {...post} />
+              <PostContent
+                {...post}
+                likedByMe={idsLikedByMe.includes(post._id)}
+              />
             </div>
           ))}
       </div>

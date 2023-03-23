@@ -5,7 +5,7 @@ import useUserInfo from '@/hooks/useUserInfo';
 export default function UsernameForm() {
   const { userInfo, status } = useUserInfo();
   const [username, setUsername] = useState('');
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     if (status === 'loading') {
